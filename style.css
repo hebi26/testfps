@@ -6,9 +6,8 @@ html, body{
 body{
     overflow-x: hidden;
     /*background-color: black;*/
-    cursor: url('img/viseur4.png')50 50, auto;
+    cursor: url('img/crosshair2.png')32 32, auto;
 }
-
 .mainbox{
     padding: inherit;
     margin: inherit;
@@ -19,32 +18,92 @@ body{
     position: absolute;
     left: -100%;
     transition:left 1s;
+    background-image: url('img/space6.jpg');
 }
 
 .box{
+    position: relative;
     height: 100%;
     text-align: center;
 }
 
-.box1{
+#box1{
     flex: 1;
     /*background-image: url('img/space3.jpg');*/
 }
-.box2{
-    flex: 1;
-    /*background-image: url('img/space3.jpg');*/
-
-}
-.box3{
+#box2{
     flex: 1;
     /*background-image: url('img/space3.jpg');*/
 
 }
+#box3{
 
-#canvas {
-    /*background-size: cover;*/
-    background-image: url('img/space6.jpg');
-    /*position : absolute;*/
-    width: 300%;
-    height: auto;
+    flex: 1;
+    /*background-image: url('img/space3.jpg');*/
+
+}
+
+/*#canvas {*/
+    /*background-image: url('img/space6.jpg');*/
+    /*width: 300%;*/
+    /*height: auto;*/
+/*}*/
+.bullet{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 0 0 5px white, 0 0 10px ;
+    -webkit-animation: neon3 1.5s ease-in-out infinite alternate;
+    -moz-animation: neon3 1.5s ease-in-out infinite alternate;
+    animation: neon3 1.5s ease-in-out infinite alternate;
+}
+@keyframes neon3 {
+    from {
+        box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FFDD1B, 0 0 70px #FFDD1B, 0 0 80px #FFDD1B, 0 0 100px #FFDD1B, 0 0 150px #FFDD1B;
+    }
+    to {
+        box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FFDD1B, 0 0 35px #FFDD1B, 0 0 40px #FFDD1B, 0 0 50px #FFDD1B, 0 0 75px #FFDD1B;
+    }
+}
+.target{
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    box-shadow: 0 0 5px white, 0 0 15px deepskyblue, 0 0 20px lightblue, 0 0 25px aliceblue;
+    background-color: #303030;
+}
+#target1{
+    top: 10%;
+    left: 10%;
+}
+#target2{
+    top: 70%;
+    left: 40%;
+}
+#target3{
+    top: 35%;
+    left: 80%;
+}
+#target4{
+    top: 75%;
+    left: 15%;
+}
+#target5{
+    top: 15%;
+    left: 40%;
+}
+#target6{
+    top: 60%;
+    left: 80%;
+}
+#target7{
+    top: 75%;
+    left: 15%;
+}
+#target8{
+    top: 35%;
+    left: 75%;
 }
