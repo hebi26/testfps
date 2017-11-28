@@ -15,29 +15,32 @@ $(document).ready(function(){
 // iCI SCRIPT DANIM SI CANVAS
 //===========================================
 
-    var baseWidth  = $(window).width();
+    var baseWidth  = $(window).width();         //on recuperer largeur de la fenetre
     // console.log(baseWidth);
 
-    $(window).mousemove(function(e){
-        posX = (e.pageX);
+    $(window).mousemove(function(e){            //au mousemove
+        posX = (e.pageX);                       //on recup position curseur X Y
         posY = (e.pageY);
-        console.log(posX, posY);
-        calcPosX(posX, baseWidth);
+        // console.log(posX, posY);
+        calcPosX(posX, baseWidth);              // on appele la fonction calcul
     });
 
+    //==============FUNCTION CALCUL % POS===================================//
+
     function calcPosX(posX, baseWidth) {
-        var posXpercent = (posX * 100) / baseWidth;
+        var posXpercent = (posX * 100) / baseWidth;         //calcul posX en %
         // console.log(posXpercent);
 
-        if(posXpercent < 5){
+        if(posXpercent < 5){                                // si le curseur est a gauche
             // calcLeft();
-            moveLeft(posXpercent);
+            moveLeft(posXpercent);                          //on appele function moveleft
         }
-        else if(posXpercent > 95){
+        else if(posXpercent > 95){                          //si cureseur a droite
             // calcLeft();
-            moveRight(posXpercent);
+            moveRight(posXpercent);                         //on appele moveright
         }
     }
+//=========FUNCTION MOVMENT LEFT================//
 
     function moveLeft(){
         if( left < 0 && !transition) {
@@ -48,7 +51,7 @@ $(document).ready(function(){
             setInterval();
         }
     }
-
+//=========FUNCTION MOVMENT RIGHT================//
     function  moveRight() {
 
         if(left > -200 && !transition) {
@@ -59,47 +62,78 @@ $(document).ready(function(){
             setInterval();
         }
     }
-
+//===========FUNCTION SET INTERVAL POUR L'ENCHAINEMENT DE SLIDE=========//
     function setInterval(){
         setTimeout(function(){
             transition = false;
         }, 800);
     }
-
+//==================AU CHARGEMENT DE LA PAGE========================//
     $(".box").click(function () {
 
-        console.log(posX, posY);
+        // console.log(posX, posY);
         counter++;
-        var boxid = $(this).attr('id');
+        var boxid = $(this).attr('id');   //ON RECUP ATTR ID
         fire(boxid);
     });
-
+//==========FUNCTION FIRE=========+//
     function fire(boxid) {
 
-        $("#soundFire").get(0).play();
+        var player = document.getElementById("soundFire");
+        player.pause();
+        player.currentTime = 0;
+        player.play();
+
 
         $('#' + boxid).append('<div class="bullet" id="bullet' + counter + '"></div>');
-        var bX = 0;
-        var bY = 0;
+        var bX = 25;
+        var bY = 25;
         $("#bullet" + counter).css({
             left: posX - bX + "px",
             top: posY - bY + "px"
         });
         $('.bullet').animate({height: '0px', width: '0px'}, "slow");
 
-        $('.target').click(function () {
+        $('.target').click(function (e) {                    //QUAND ON CLIQUE SUR UNE CIBLE
             var targetid = $(this).attr('id');
-            setTimeout(function () {
-                explode(targetid);
+            var boxlayoutid = $(this).parent().attr('id');
+            var nposX = (e.pageX);
+            var nposY = (e.pageY);
+
+            console.log(targetid);
+            setTimeout(function () {                        //ON APPEL EFUNCTION EXPLODE APRES 1S
+                explode(targetid, boxlayoutid, nposX, nposY);
             }, 1000);
 
         });
     }
-    function explode(targetid) {
-        $("#soundExplode").get(0).play();
-        $("#"+targetid).css({backgroundColor: "black",
-                            boxShadow: "0 0 5px red, 0 0 25px orangered, 0 0 35px gold, 0 0 40px yellow",
-                            transition: 500});
+
+    //==========PARALLAX=========================
+    //=========FUNCTION EXPLODE==========================
+
+    function explode(targetid, boxlayoutid, nposX, nposY) {
+        var player = document.getElementById("soundExplode");
+        player.pause();
+        player.currentTime = 0;
+        player.play();
+
+        $("#"+boxlayoutid).append('<img class="touch" src="img/explode1.png">');
+        var bX = 200;
+        var bY = 200;
+        $(".touch").css({
+            left: nposX - bX + "px",
+            top: nposY - bY + "px"
+        });
+        $('.touch').fadeOut(500);
         $("#"+targetid).fadeOut(1500);
+
+        setTimeout(function () {                        //ON APPEL EFUNCTION EXPLODE APRES 500mS
+            $('.infos').fadeIn(2500);
+        }, 500);
     }
+
+    //========FUNCTION ANIM TEXTE=====//
+
+
+
 });

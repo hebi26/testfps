@@ -5,6 +5,7 @@ html, body{
 
 body{
     overflow-x: hidden;
+    overflow-y: hidden;
     /*background-color: black;*/
     cursor: url('img/crosshair2.png')32 32, auto;
 }
@@ -29,25 +30,14 @@ body{
 
 #box1{
     flex: 1;
-    /*background-image: url('img/space3.jpg');*/
 }
 #box2{
     flex: 1;
-    /*background-image: url('img/space3.jpg');*/
-
 }
 #box3{
-
     flex: 1;
-    /*background-image: url('img/space3.jpg');*/
-
 }
 
-/*#canvas {*/
-    /*background-image: url('img/space6.jpg');*/
-    /*width: 300%;*/
-    /*height: auto;*/
-/*}*/
 .bullet{
     position: absolute;
     width: 50px;
@@ -59,6 +49,12 @@ body{
     -moz-animation: neon3 1.5s ease-in-out infinite alternate;
     animation: neon3 1.5s ease-in-out infinite alternate;
 }
+
+.touch{
+    position: absolute;
+    width: 400px;
+    height: 400px;
+}
 @keyframes neon3 {
     from {
         box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FFDD1B, 0 0 70px #FFDD1B, 0 0 80px #FFDD1B, 0 0 100px #FFDD1B, 0 0 150px #FFDD1B;
@@ -67,43 +63,42 @@ body{
         box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FFDD1B, 0 0 35px #FFDD1B, 0 0 40px #FFDD1B, 0 0 50px #FFDD1B, 0 0 75px #FFDD1B;
     }
 }
+
 .target{
     position: absolute;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    box-shadow: 0 0 5px white, 0 0 15px deepskyblue, 0 0 20px lightblue, 0 0 25px aliceblue;
-    background-color: #303030;
-}
-#target1{
-    top: 10%;
-    left: 10%;
-}
-#target2{
-    top: 70%;
-    left: 40%;
-}
-#target3{
-    top: 35%;
-    left: 80%;
 }
 #target4{
-    top: 75%;
-    left: 15%;
+    top: 40%;
+    left: 60%;
 }
-#target5{
-    top: 15%;
-    left: 40%;
+.stitre{
+    position: absolute;
+    color: black;
+    top: 50%;
+    left: 77%;
+    font-family: Iceland;
+    font-size: 50px;
+    animation: neon2 1.5s ease-in-out infinite alternate;
 }
-#target6{
-    top: 60%;
-    left: 80%;
+@keyframes neon2 {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
+    }
+    to {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+    }
 }
-#target7{
-    top: 75%;
-    left: 15%;
+
+.infos{
+    position: absolute;
+    top: 65%;
+    left: 70%;
+    width: 25%;
+    display: none;
+    color: white;
 }
-#target8{
-    top: 35%;
-    left: 75%;
+.txt{
+    font-family: Iceland;
+    font-size: 25px;
+    text-shadow: 0 0 5px #228DFF;
 }
