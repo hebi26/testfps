@@ -3,6 +3,7 @@ var transition = false;
 var counter = 0;
 var posX;
 var posY;
+var i;
 //=================================
 //====================================
 //function canvas animation
@@ -25,7 +26,19 @@ $(document).ready(function(){
         calcPosX(posX, baseWidth);              // on appele la fonction calcul
     });
 
-    //==============FUNCTION CALCUL % POS===================================//
+    $(".box").click(function () {
+
+        // console.log(posX, posY);
+        counter++;
+        var boxid = $(this).attr('id');   //ON RECUP ATTR ID
+        fire(boxid);
+    });
+
+    $('#box3').hover(function() {
+        timerShip3();
+    });
+
+        //==============FUNCTION CALCUL % POS===================================//
 
     function calcPosX(posX, baseWidth) {
         var posXpercent = (posX * 100) / baseWidth;         //calcul posX en %
@@ -68,14 +81,7 @@ $(document).ready(function(){
             transition = false;
         }, 800);
     }
-//==================AU CHARGEMENT DE LA PAGE========================//
-    $(".box").click(function () {
 
-        // console.log(posX, posY);
-        counter++;
-        var boxid = $(this).attr('id');   //ON RECUP ATTR ID
-        fire(boxid);
-    });
 //==========FUNCTION FIRE=========+//
     function fire(boxid) {
 
@@ -94,15 +100,16 @@ $(document).ready(function(){
         });
         $('.bullet').animate({height: '0px', width: '0px'}, "slow");
 
-        $('.target').click(function (e) {                    //QUAND ON CLIQUE SUR UNE CIBLE
+        $('.target, .ship').click(function (e) {                    //QUAND ON CLIQUE SUR UNE CIBLE
             var targetid = $(this).attr('id');
             var boxlayoutid = $(this).parent().attr('id');
+            i = parseInt(/\d/.exec(targetid));
             var nposX = (e.pageX);
             var nposY = (e.pageY);
 
-            console.log(targetid);
+
             setTimeout(function () {                        //ON APPEL EFUNCTION EXPLODE APRES 1S
-                explode(targetid, boxlayoutid, nposX, nposY);
+                explode(targetid, boxlayoutid, nposX, nposY, i);
             }, 1000);
 
         });
@@ -111,29 +118,36 @@ $(document).ready(function(){
     //==========PARALLAX=========================
     //=========FUNCTION EXPLODE==========================
 
-    function explode(targetid, boxlayoutid, nposX, nposY) {
+    function explode(targetid, boxlayoutid, nposX, nposY, i) {
         var player = document.getElementById("soundExplode");
         player.pause();
         player.currentTime = 0;
         player.play();
 
         $("#"+boxlayoutid).append('<img class="touch" src="img/explode1.png">');
-        var bX = 200;
-        var bY = 200;
+        var bX = 150;
+        var bY = 150;
         $(".touch").css({
             left: nposX - bX + "px",
             top: nposY - bY + "px"
         });
         $('.touch').fadeOut(500);
-        $("#"+targetid).fadeOut(1500);
+        $("#"+targetid).fadeOut(1000);
 
         setTimeout(function () {                        //ON APPEL EFUNCTION EXPLODE APRES 500mS
-            $('.infos').fadeIn(2500);
+            $("#infos"+i).fadeIn(2000);
         }, 500);
     }
 
     //========FUNCTION ANIM TEXTE=====//
+    //========FUNCTION ANIM SAPCESHIP
 
+    function timerShip3(){
+        setTimeout(function(){
+        $(".ship3").animate({width: "300px", height: "300px"}, 500)}, 500);
 
+        setTimeout(function(){
+            $(".ship2").animate({width: "200px", height: "200px"}, 500)}, 1000);
+    }
 
 });
