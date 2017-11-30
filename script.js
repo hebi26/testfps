@@ -8,16 +8,20 @@ var counter = 0;
 var posX;
 var posY;
 var i;
-//=================================
-//====================================
-//function canvas animation
-//===================================
 
-
-//=======================================
+// ===============================
 $(document).ready(function(){
 //===========================================
 // iCI SCRIPT DANIM SI CANVAS
+    $(".effect").jParticle({
+        particlesNumber: 500,
+       background: 'transparent',
+        disableLinks: true,
+        minSize: 2,
+        maxSize: 4,
+        color: 'lightblue'
+
+    });
 //===========================================
 
     var baseWidth  = $(window).width();         //on recuperer largeur de la fenetre
@@ -120,7 +124,7 @@ $(document).ready(function(){
 
             setTimeout(function () {                        //ON APPEL EFUNCTION EXPLODE APRES 1S
                 explode(targetid, boxid, nposX, nposY);
-            }, 1000);
+            }, 500);
 
         });
     }
@@ -134,8 +138,6 @@ $(document).ready(function(){
             player.pause();
             player.currentTime = 0;
             player.play();
-            touched = false;
-        }
 
             $("#" + boxid).append('<img class="touch" src="img/explode1.png">');
             var bX = 150;
@@ -144,10 +146,11 @@ $(document).ready(function(){
                 left: nposX - bX + "px",
                 top: nposY - bY + "px"
             });
-
-
             $('.touch').fadeOut(500);
+
             $("#" + targetid).fadeOut(500);
+            touched = false;
+        }
             if ($('.touch').length === 10) {
                 setTimeout(function () {
                     $('.touch').remove()
@@ -191,7 +194,7 @@ $(document).ready(function(){
                 player.play();
 
             }}, 1000)
-        }, 500);
+        }, 1000);
 
         setTimeout(function () {
             $(".ship2").animate({width: "200px", height: "200px"},{ start: function() {
@@ -199,7 +202,7 @@ $(document).ready(function(){
                 player.currentTime = 0;
                 player.play();
             }}, 1000)
-        }, 1000);
+        }, 1500);
     }
 
 });
