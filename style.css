@@ -73,11 +73,6 @@ body{
     position: absolute;
 }
 
-/*@keyframes rotate {*/
-    /*0% { transform: rotate(0deg); }*/
-    /*50% { transform: rotate(2deg); }*/
-    /*100% { transform: rotate(0deg); }*/
-/*}*/
 @keyframes pulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.02); }
@@ -89,6 +84,61 @@ body{
 .ship3, #infos3{
     animation: pulse 3s infinite;
 }
+
+.ship11{
+    animation: pulse 1.7s infinite;
+}
+.ship10{
+    animation: pulse 2.6s infinite;
+}
+.ship8{
+    animation: pulse 2s infinite;
+}
+
+
+#target2, #target3, #target10, #target11{
+    width: 0;
+}
+#target11{
+    left: 35%;
+    top: 25%;
+    animation: pulse 8s infinite;
+}
+#infos11{
+    width: 80%;
+    height: 50%;
+    left: 10%;
+    top: 50%;
+}
+.skills{
+    display: inline-block;
+}
+.skills img{
+    height: 100px;
+    width: auto;
+}
+
+#target10{
+    top: 20%;
+    left: 65%;
+}
+#target9 {
+    top: 65%;
+    left: 65%;
+}
+#target8{
+    top: 70%;
+    left: 0;
+    animation: pulse 1.8s infinite;
+    width: 30%;
+    height: auto;
+}
+#target7{
+    top: 5%;
+    left: 5%;
+    width: 20%;
+}
+
 #target6{
     top: 30%;
     left: 35%;
@@ -131,9 +181,7 @@ body{
 }
 #target3{
     top: 10%;
-    left: 45%;
-    width: 0px;
-    height: 0px;
+    left: 55%;
 }
 #infos3{
     top: 15%;
@@ -142,10 +190,8 @@ body{
     text-shadow: 0 0 5px green, 0 0 20px yellowgreen;
 }
 #target2{
-    top: 60%;
-    left: 20%;
-    width: 0px;
-    height: 0px;
+    top: 65%;
+    left: 10%;
 }
 #infos2{
     top: 60%;
@@ -179,4 +225,14 @@ body{
     width: 100%;
     height: 100%;
     background-color: transparent;
+}
+.font{
+    position: absolute;
+    width: 80%;
+    height: auto;
+    left: 10%;
+    top: -10%;
+}
+.stars{
+    width: 150px;
 }

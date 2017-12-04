@@ -23,7 +23,7 @@ $(document).ready(function(){
 
     });
 //===========================================
-
+    checkAnim();
     var baseWidth  = $(window).width();         //on recuperer largeur de la fenetre
     // console.log(baseWidth);
 
@@ -32,7 +32,6 @@ $(document).ready(function(){
         posY = (e.pageY);
         // console.log(posX, posY);
         calcPosX(posX, baseWidth); // on appele la fonction calcul
-
     });
 
     $(".box").click(function () {
@@ -117,7 +116,8 @@ $(document).ready(function(){
             touched=true;
             var targetid = $(this).attr('id');
             var boxid = $(this).parent().attr('id');
-            i = parseInt(/\d/.exec(targetid));
+            i = parseInt(/[0-9]+/.exec(targetid));
+            console.log(i);
             var nposX = (e.pageX);
             var nposY = (e.pageY);
 
@@ -170,9 +170,10 @@ $(document).ready(function(){
             anim3 = true;
             timerShip3();
         }
-        // else if (left === -100) {
-        //
-        // }
+        else if (left === -100 && !anim2) {
+            anim2 = true;
+            timerShip2();
+        }
         // else {
         //     anim1 = false;
         //     anim2 = false;
@@ -188,21 +189,32 @@ $(document).ready(function(){
         var player = document.getElementById("soundShip");
 
         setTimeout(function () {
-            $(".ship3").animate({width: "300px", height: "300px"},{ start: function(){
+            $(".ship3").animate({width: "15%", height: "auto"},{ start: function(){
                 player.pause();
                 player.currentTime = 0;
                 player.play();
-
             }}, 1000)
         }, 1000);
 
         setTimeout(function () {
-            $(".ship2").animate({width: "200px", height: "200px"},{ start: function() {
+            $(".ship2").animate({width: "20%", height: "auto"},{ start: function() {
                 player.pause();
                 player.currentTime = 0;
                 player.play();
             }}, 1000)
         }, 1500);
+    }
+
+    function timerShip2(){
+        var player = document.getElementById("soundShip3");
+
+        setTimeout(function () {
+            $(".ship11").animate({width: "30%", height: "auto"},{ start: function() {
+                player.pause();
+                player.currentTime = 0;
+                player.play();
+            }}, 2000)
+        }, 800);
     }
 
 });
