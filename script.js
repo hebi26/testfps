@@ -22,6 +22,7 @@ $(document).ready(function(){
         color: 'lightblue'
 
     });
+
 //===========================================
     checkAnim();
     var baseWidth  = $(window).width();         //on recuperer largeur de la fenetre
@@ -41,7 +42,9 @@ $(document).ready(function(){
         var boxid = $(this).attr('id');   //ON RECUP ATTR ID
         fire(boxid);
     });
+    $('.skills').hover(function(){
 
+    })
         //==============FUNCTION CALCUL % POS===================================//
 
     function calcPosX(posX, baseWidth) {
@@ -213,8 +216,7 @@ $(document).ready(function(){
                 player.pause();
                 player.currentTime = 0;
                 player.play();
-            }}, 2000)
+            }}, 500)
         }, 800);
     }
-
 });

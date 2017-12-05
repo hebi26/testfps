@@ -72,7 +72,6 @@ body{
 .target, .ship{
     position: absolute;
 }
-
 @keyframes pulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.02); }
@@ -95,7 +94,6 @@ body{
     animation: pulse 2s infinite;
 }
 
-
 #target2, #target3, #target10, #target11{
     width: 0;
 }
@@ -104,18 +102,21 @@ body{
     top: 25%;
     animation: pulse 8s infinite;
 }
+.img-fluid{
+    /*width: 100%;*/
+    /*height: auto;*/
+    height: 100%;
+    width: auto;
+}
 #infos11{
     width: 80%;
-    height: 50%;
     left: 10%;
     top: 50%;
+    /*border: 1px solid white;*/
 }
 .skills{
-    display: inline-block;
-}
-.skills img{
-    height: 100px;
-    width: auto;
+    /*border: 1px solid red;*/
+    padding: 10px 10px;
 }
 
 #target10{
@@ -233,6 +234,4 @@ body{
     left: 10%;
     top: -10%;
 }
-.stars{
-    width: 150px;
-}
+
